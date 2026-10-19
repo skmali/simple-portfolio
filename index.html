@@ -3,171 +3,348 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shravan Mali - Application Architect</title>
-  <meta name="description" content="Shravan Mali, Application Architect with over 20 years in system design and implementation. Explore skills, experience, and projects." />
-  <meta property="og:title" content="Shravan Mali - Application Architect" />
-  <meta property="og:description" content="Application Architect with 20+ years in enterprise Java/J2EE system design and implementation." />
+  <title>Under Construction &middot; Shravan Mali</title>
+  <meta name="description" content="This site is currently under construction. Shravan Mali - Application Architect. Check back soon." />
+  <meta property="og:title" content="Under Construction - Shravan Mali" />
+  <meta property="og:description" content="Something new is being built. Check back soon." />
   <meta property="og:type" content="website" />
-  <link rel="icon" type="image/png" href="assets/shravan-mali.png" />
-  <link rel="apple-touch-icon" href="assets/shravan-mali.png" />
+  <meta name="robots" content="noindex" />
   <link rel="icon" href="assets/favicon.ico" sizes="any" />
 
-  <!-- Pre-paint theme: apply stored theme before first paint to avoid a flash. -->
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem('portfolio-theme');
-        if (t !== 'light' && t !== 'dark') { t = 'dark'; localStorage.setItem('portfolio-theme', 'dark'); }
-        document.documentElement.setAttribute('data-theme', t);
-      } catch (e) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
-    })();
-  </script>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg2: #101935;
+      --bg3: #1a1040;
+      --surface: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.12);
+      --content: #e6ebff;
+      --muted: #9aa6c7;
+      --accent: #6ea8ff;
+      --accent2: #a06bff;
+      --accent-contrast: #06102a;
+    }
 
-  <!-- Compiled Tailwind (built from tailwind.css via the Tailwind CLI). -->
-  <link rel="stylesheet" href="css/app.css" />
-  <link rel="stylesheet" href="css/styles.css" />
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: var(--content);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      background: linear-gradient(-45deg, var(--bg), var(--bg2), var(--bg3), var(--bg));
+      background-size: 400% 400%;
+      animation: gradientShift 18s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Twinkling starfield */
+    .stars, .stars::after {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 120px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1.5px 1.5px at 200px 150px, rgba(174,196,255,0.9), transparent),
+        radial-gradient(1px 1px at 300px 60px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 380px 200px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 460px 120px, rgba(200,180,255,0.8), transparent);
+      background-repeat: repeat;
+      background-size: 500px 300px;
+      animation: twinkle 4s ease-in-out infinite alternate;
+    }
+    .stars::after {
+      content: "";
+      background-size: 400px 260px;
+      opacity: 0.5;
+      animation-duration: 6s;
+      animation-delay: -2s;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.35; }
+      to   { opacity: 0.9; }
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      width: min(92vw, 640px);
+      padding: 3rem 2rem;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--surface);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6);
+      animation: cardIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(24px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Logo + orbit */
+    .orbit {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 1.75rem;
+    }
+
+    .glow-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--accent), var(--accent2), var(--accent));
+      filter: blur(4px);
+      animation: spin 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    .glow-ring::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      background: var(--bg);
+    }
+
+    .avatar {
+      position: absolute;
+      inset: 16px;
+      width: calc(100% - 32px);
+      height: calc(100% - 32px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      background: radial-gradient(circle at 50% 40%, rgba(110,168,255,0.15), var(--bg));
+      box-shadow: 0 0 30px rgba(110, 168, 255, 0.4);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .avatar svg {
+      width: 52%;
+      height: 52%;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+
+    /* Orbiting dots */
+    .orbit-dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      margin: -50% 0 0 -50%;
+      animation: spin 9s linear infinite;
+    }
+    .orbit-dot.reverse { animation-duration: 13s; animation-direction: reverse; }
+    .orbit-dot span {
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      margin-left: -6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+    .orbit-dot.reverse span { background: var(--accent2); box-shadow: 0 0 12px var(--accent2); }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(110, 168, 255, 0.08);
+    }
+
+    h1 {
+      margin: 1rem 0 0.5rem;
+      font-size: clamp(1.9rem, 6vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(90deg, var(--content), var(--accent), var(--accent2), var(--content));
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shine 6s linear infinite;
+    }
+
+    @keyframes shine { to { background-position: 250% center; } }
+
+    .sub { color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0.25rem auto 0; max-width: 42ch; }
+
+    /* Animated progress bar */
+    .progress {
+      margin: 2rem auto 0.5rem;
+      width: min(80%, 360px);
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .progress .fill {
+      height: 100%;
+      width: 40%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      background-size: 200% 100%;
+      animation: load 2.6s ease-in-out infinite, slide 2s linear infinite;
+    }
+
+    @keyframes load {
+      0%   { width: 8%;  margin-left: 0%; }
+      50%  { width: 55%; margin-left: 20%; }
+      100% { width: 8%;  margin-left: 92%; }
+    }
+    @keyframes slide { to { background-position: 200% 0; } }
+
+    .status {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .status .dots::after {
+      content: "";
+      animation: dots 1.6s steps(4, end) infinite;
+    }
+    @keyframes dots {
+      0%   { content: ""; }
+      25%  { content: "."; }
+      50%  { content: ".."; }
+      75%  { content: "..."; }
+      100% { content: ""; }
+    }
+
+    .links {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--content);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .links a:hover {
+      transform: translateY(-2px);
+      background: rgba(110, 168, 255, 0.12);
+      color: var(--accent);
+    }
+    .links a.primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: var(--accent-contrast);
+      border-color: transparent;
+      font-weight: 600;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 1rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      z-index: 2;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
 </head>
 
-<body class="bg-bg text-content font-sans antialiased">
-  <!-- Navigation -->
-  <nav class="sticky top-0 z-50 border-b border-border bg-surface/80 backdrop-blur">
-    <div class="max-w-content mx-auto px-6 h-16 flex items-center gap-4">
-      <a href="#hero" class="font-semibold tracking-tight hover:text-accent transition-colors">Shravan Mali</a>
+<body>
+  <div class="stars" aria-hidden="true"></div>
 
-      <ul class="hidden md:flex items-center gap-7 ml-auto">
-        <li><a href="#about" class="text-sm text-muted hover:text-accent transition-colors">About</a></li>
-        <li><a href="#skills" class="text-sm text-muted hover:text-accent transition-colors">Skills</a></li>
-        <li><a href="#experience" class="text-sm text-muted hover:text-accent transition-colors">Experience</a></li>
-        <li><a href="#projects" class="text-sm text-muted hover:text-accent transition-colors">Projects</a></li>
-        <li><a href="#contact" class="text-sm text-muted hover:text-accent transition-colors">Contact</a></li>
-      </ul>
-
-      <button id="themeToggle" type="button" aria-label="Toggle theme"
-        class="ml-auto md:ml-0 inline-flex items-center justify-center w-9 h-9 rounded-lg border border-border hover:bg-surface2 transition-colors">
-        <span id="themeIcon" aria-hidden="true">&#9728;</span>
-      </button>
-
-      <button id="menuToggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu"
-        class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-border hover:bg-surface2 transition-colors">
-        <span aria-hidden="true">&#9776;</span>
-      </button>
+  <main class="card">
+    <div class="orbit">
+      <div class="glow-ring" aria-hidden="true"></div>
+      <div class="avatar" role="img" aria-label="Under construction icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6 6a1.5 1.5 0 0 0 2.1 2.1l6-6a4 4 0 0 0 5.4-5.4l-2.3 2.3-1.8-.5-.5-1.8 2.5-2.1z" />
+          <path d="M15.5 8.5 20 13" />
+        </svg>
+      </div>
+      <div class="orbit-dot" aria-hidden="true"><span></span></div>
+      <div class="orbit-dot reverse" aria-hidden="true"><span></span></div>
     </div>
 
-    <div id="mobileMenu" class="md:hidden hidden border-t border-border bg-surface">
-      <ul class="px-6 py-2 flex flex-col">
-        <li><a href="#about" class="menu-link block py-3 text-muted hover:text-accent transition-colors">About</a></li>
-        <li><a href="#skills" class="menu-link block py-3 text-muted hover:text-accent transition-colors">Skills</a></li>
-        <li><a href="#experience" class="menu-link block py-3 text-muted hover:text-accent transition-colors">Experience</a></li>
-        <li><a href="#projects" class="menu-link block py-3 text-muted hover:text-accent transition-colors">Projects</a></li>
-        <li><a href="#contact" class="menu-link block py-3 text-muted hover:text-accent transition-colors">Contact</a></li>
-      </ul>
+    <span class="badge">Under Construction</span>
+    <h1>Something great is on the way</h1>
+    <p class="sub">
+      Shravan Mali &middot; Application Architect. The portfolio is getting a fresh coat of paint.
+      Check back soon.
+    </p>
+
+    <div class="progress" role="progressbar" aria-label="Site build progress" aria-valuetext="In progress">
+      <div class="fill"></div>
     </div>
-  </nav>
+    <p class="status">Building the experience<span class="dots"></span></p>
 
-  <main>
-    <!-- Hero -->
-    <section id="hero" tabindex="-1">
-      <div class="min-h-[80vh] flex items-center">
-        <div class="max-w-content mx-auto px-6 py-24 w-full flex flex-col-reverse items-center gap-12 text-center md:flex-row md:gap-16 md:text-left">
-          <div class="flex-1">
-            <p class="text-accent text-sm font-semibold tracking-widest uppercase">Portfolio</p>
-            <h1 class="mt-4 text-5xl md:text-7xl font-bold tracking-tight">Shravan Mali</h1>
-            <p class="mt-4 text-xl md:text-2xl font-medium text-accent">Application Architect</p>
-            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              Application Architect with over 20 years of experience in system design and implementation,
-              delivering enterprise Java/J2EE platforms from architecture through launch. Proven record
-              leading full life-cycle projects, optimizing server performance, and partnering across teams
-              to ship reliable, maintainable software.
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-4 md:justify-start">
-              <a href="assets/shravanmali_resume.pdf" download="shravanmali_resume.pdf"
-                class="inline-flex items-center rounded-lg bg-accent px-6 py-3 font-medium text-accent-contrast hover:opacity-90 transition">Download Resume</a>
-              <a href="#contact"
-                class="inline-flex items-center rounded-lg border border-border px-6 py-3 font-medium hover:bg-surface2 transition">Get in touch</a>
-            </div>
-          </div>
-          <div class="shrink-0">
-            <img src="assets/shravan-mali.png" alt="Shravan Mali" width="224" height="224"
-              class="h-40 w-40 md:h-56 md:w-56 rounded-full object-cover ring-4 ring-accent/60 shadow-xl" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" tabindex="-1" class="border-t border-border">
-      <div class="max-w-content mx-auto px-6 py-20 md:py-28">
-        <p class="text-accent text-sm font-semibold tracking-widest uppercase">About</p>
-        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Who I am</h2>
-        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-muted">
-          Application Architect with over 20 years of experience in system design and implementation.
-          I design, build, and launch enterprise platforms end to end, balancing performance, reliability,
-          and maintainability while collaborating closely across teams and clients.
-        </p>
-        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Full Life Cycle Project Management</div>
-          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Systems Launch/Implementation</div>
-          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Application Designing/Architecting</div>
-          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Quality Assurance and Testing</div>
-          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Client Relationship Management</div>
-          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Server Optimization</div>
-          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Problem Resolution/Troubleshooting</div>
-          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Cross-Team Collaboration</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" tabindex="-1" class="border-t border-border bg-surface/40">
-      <div class="max-w-content mx-auto px-6 py-20 md:py-28">
-        <p class="text-accent text-sm font-semibold tracking-widest uppercase">Skills</p>
-        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Technologies &amp; tools</h2>
-        <div id="skillsGrid" class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" tabindex="-1" class="border-t border-border">
-      <div class="max-w-content mx-auto px-6 py-20 md:py-28">
-        <p class="text-accent text-sm font-semibold tracking-widest uppercase">Experience</p>
-        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Where I have worked</h2>
-        <ol id="experienceList" class="mt-10 space-y-6"></ol>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" tabindex="-1" class="border-t border-border bg-surface/40">
-      <div class="max-w-content mx-auto px-6 py-20 md:py-28">
-        <p class="text-accent text-sm font-semibold tracking-widest uppercase">Projects</p>
-        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Selected work</h2>
-        <ul id="projectsGrid" class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6"></ul>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" tabindex="-1" class="border-t border-border">
-      <div class="max-w-content mx-auto px-6 py-20 md:py-28">
-        <p class="text-accent text-sm font-semibold tracking-widest uppercase">Contact</p>
-        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Get in touch</h2>
-        <p class="mt-6 max-w-2xl text-lg text-muted">I am always open to discussing new opportunities and projects.</p>
-        <ul class="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-          <li><a class="inline-flex items-center rounded-lg border border-border px-5 py-3 hover:bg-surface2 hover:text-accent transition" href="mailto:Shravan.Mali@gmail.com">Shravan.Mali@gmail.com</a></li>
-          <li><a class="inline-flex items-center rounded-lg border border-border px-5 py-3 hover:bg-surface2 hover:text-accent transition" href="tel:2489796465">248 979 6465</a></li>
-          <li><a class="inline-flex items-center rounded-lg border border-border px-5 py-3 hover:bg-surface2 hover:text-accent transition" href="http://www.linkedin.com/in/skmali" target="_blank" rel="noopener noreferrer">LinkedIn profile</a></li>
-        </ul>
-      </div>
-    </section>
+    <nav class="links">
+      <a class="primary" href="mailto:Shravan.Mali@gmail.com">&#9993; Email me</a>
+      <a href="http://www.linkedin.com/in/skmali" target="_blank" rel="noopener noreferrer">&#128279; LinkedIn</a>
+      <a href="assets/shravanmali_resume.pdf" download="shravanmali_resume.pdf">&#11015; Resume</a>
+    </nav>
   </main>
 
-  <footer class="border-t border-border">
-    <div class="max-w-content mx-auto px-6 py-8 text-sm text-muted">
-      &copy; <span id="year"></span> Shravan Mali. All rights reserved.
-    </div>
+  <footer>
+    &copy; <span id="year"></span> Shravan Mali. All rights reserved.
   </footer>
 
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
