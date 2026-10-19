@@ -1,0 +1,13 @@
+{
+  "name": "simple-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static portfolio for Shravan Mali (vanilla HTML/CSS/JS + Tailwind).",
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/tailwind.css -o ./css/app.css --minify",
+    "watch:css": "tailwindcss -i ./css/tailwind.css -o ./css/app.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
+  }
+}
