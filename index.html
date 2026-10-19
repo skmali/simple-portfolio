@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shravan Mali - Application Architect</title>
+  <meta name="description" content="Shravan Mali, Application Architect with over 20 years in system design and implementation. Explore skills, experience, and projects." />
+  <meta property="og:title" content="Shravan Mali - Application Architect" />
+  <meta property="og:description" content="Application Architect with 20+ years in enterprise Java/J2EE system design and implementation." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/favicon.ico" />
+
+  <!-- Pre-paint theme: apply stored theme before first paint to avoid a flash. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('portfolio-theme');
+        if (t !== 'light' && t !== 'dark') { t = 'dark'; localStorage.setItem('portfolio-theme', 'dark'); }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <!-- Tailwind via CDN (no build step; ideal for static hosting). -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            bg: 'rgb(var(--bg) / <alpha-value>)',
+            surface: 'rgb(var(--surface) / <alpha-value>)',
+            surface2: 'rgb(var(--surface-2) / <alpha-value>)',
+            border: 'rgb(var(--border) / <alpha-value>)',
+            content: 'rgb(var(--text) / <alpha-value>)',
+            muted: 'rgb(var(--muted) / <alpha-value>)',
+            accent: 'rgb(var(--accent) / <alpha-value>)',
+            'accent-contrast': 'rgb(var(--accent-contrast) / <alpha-value>)'
+          },
+          maxWidth: { content: '72rem' },
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="bg-bg text-content font-sans antialiased">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 border-b border-border bg-surface/80 backdrop-blur">
+    <div class="max-w-content mx-auto px-6 h-16 flex items-center gap-4">
+      <a href="#hero" class="font-semibold tracking-tight hover:text-accent transition-colors">Shravan Mali</a>
+
+      <ul class="hidden md:flex items-center gap-7 ml-auto">
+        <li><a href="#about" class="text-sm text-muted hover:text-accent transition-colors">About</a></li>
+        <li><a href="#skills" class="text-sm text-muted hover:text-accent transition-colors">Skills</a></li>
+        <li><a href="#experience" class="text-sm text-muted hover:text-accent transition-colors">Experience</a></li>
+        <li><a href="#projects" class="text-sm text-muted hover:text-accent transition-colors">Projects</a></li>
+        <li><a href="#contact" class="text-sm text-muted hover:text-accent transition-colors">Contact</a></li>
+      </ul>
+
+      <button id="themeToggle" type="button" aria-label="Toggle theme"
+        class="ml-auto md:ml-0 inline-flex items-center justify-center w-9 h-9 rounded-lg border border-border hover:bg-surface2 transition-colors">
+        <span id="themeIcon" aria-hidden="true">&#9728;</span>
+      </button>
+
+      <button id="menuToggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu"
+        class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-border hover:bg-surface2 transition-colors">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="md:hidden hidden border-t border-border bg-surface">
+      <ul class="px-6 py-2 flex flex-col">
+        <li><a href="#about" class="menu-link block py-3 text-muted hover:text-accent transition-colors">About</a></li>
+        <li><a href="#skills" class="menu-link block py-3 text-muted hover:text-accent transition-colors">Skills</a></li>
+        <li><a href="#experience" class="menu-link block py-3 text-muted hover:text-accent transition-colors">Experience</a></li>
+        <li><a href="#projects" class="menu-link block py-3 text-muted hover:text-accent transition-colors">Projects</a></li>
+        <li><a href="#contact" class="menu-link block py-3 text-muted hover:text-accent transition-colors">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section id="hero" tabindex="-1">
+      <div class="min-h-[80vh] flex items-center">
+        <div class="max-w-content mx-auto px-6 py-24 w-full flex flex-col-reverse items-center gap-12 text-center md:flex-row md:gap-16 md:text-left">
+          <div class="flex-1">
+            <p class="text-accent text-sm font-semibold tracking-widest uppercase">Portfolio</p>
+            <h1 class="mt-4 text-5xl md:text-7xl font-bold tracking-tight">Shravan Mali</h1>
+            <p class="mt-4 text-xl md:text-2xl font-medium text-accent">Application Architect</p>
+            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+              Application Architect with over 20 years of experience in system design and implementation,
+              delivering enterprise Java/J2EE platforms from architecture through launch. Proven record
+              leading full life-cycle projects, optimizing server performance, and partnering across teams
+              to ship reliable, maintainable software.
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-4 md:justify-start">
+              <a href="assets/shravanmali_resume.pdf" download="shravanmali_resume.pdf"
+                class="inline-flex items-center rounded-lg bg-accent px-6 py-3 font-medium text-accent-contrast hover:opacity-90 transition">Download Resume</a>
+              <a href="#contact"
+                class="inline-flex items-center rounded-lg border border-border px-6 py-3 font-medium hover:bg-surface2 transition">Get in touch</a>
+            </div>
+          </div>
+          <div class="shrink-0">
+            <img src="assets/shravan-mali.png" alt="Shravan Mali" width="224" height="224"
+              class="h-40 w-40 md:h-56 md:w-56 rounded-full object-cover ring-4 ring-accent/60 shadow-xl" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" tabindex="-1" class="border-t border-border">
+      <div class="max-w-content mx-auto px-6 py-20 md:py-28">
+        <p class="text-accent text-sm font-semibold tracking-widest uppercase">About</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Who I am</h2>
+        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-muted">
+          Application Architect with over 20 years of experience in system design and implementation.
+          I design, build, and launch enterprise platforms end to end, balancing performance, reliability,
+          and maintainability while collaborating closely across teams and clients.
+        </p>
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Full Life Cycle Project Management</div>
+          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Systems Launch/Implementation</div>
+          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Application Designing/Architecting</div>
+          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Quality Assurance and Testing</div>
+          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Client Relationship Management</div>
+          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Server Optimization</div>
+          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Problem Resolution/Troubleshooting</div>
+          <div class="bg-surface border border-border rounded-lg px-4 py-3 text-sm">Cross-Team Collaboration</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" tabindex="-1" class="border-t border-border bg-surface/40">
+      <div class="max-w-content mx-auto px-6 py-20 md:py-28">
+        <p class="text-accent text-sm font-semibold tracking-widest uppercase">Skills</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Technologies &amp; tools</h2>
+        <div id="skillsGrid" class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" tabindex="-1" class="border-t border-border">
+      <div class="max-w-content mx-auto px-6 py-20 md:py-28">
+        <p class="text-accent text-sm font-semibold tracking-widest uppercase">Experience</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Where I have worked</h2>
+        <ol id="experienceList" class="mt-10 space-y-6"></ol>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" tabindex="-1" class="border-t border-border bg-surface/40">
+      <div class="max-w-content mx-auto px-6 py-20 md:py-28">
+        <p class="text-accent text-sm font-semibold tracking-widest uppercase">Projects</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Selected work</h2>
+        <ul id="projectsGrid" class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6"></ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" tabindex="-1" class="border-t border-border">
+      <div class="max-w-content mx-auto px-6 py-20 md:py-28">
+        <p class="text-accent text-sm font-semibold tracking-widest uppercase">Contact</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Get in touch</h2>
+        <p class="mt-6 max-w-2xl text-lg text-muted">I am always open to discussing new opportunities and projects.</p>
+        <ul class="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+          <li><a class="inline-flex items-center rounded-lg border border-border px-5 py-3 hover:bg-surface2 hover:text-accent transition" href="mailto:Shravan.Mali@gmail.com">Shravan.Mali@gmail.com</a></li>
+          <li><a class="inline-flex items-center rounded-lg border border-border px-5 py-3 hover:bg-surface2 hover:text-accent transition" href="tel:2489796465">248 979 6465</a></li>
+          <li><a class="inline-flex items-center rounded-lg border border-border px-5 py-3 hover:bg-surface2 hover:text-accent transition" href="http://www.linkedin.com/in/skmali" target="_blank" rel="noopener noreferrer">LinkedIn profile</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-border">
+    <div class="max-w-content mx-auto px-6 py-8 text-sm text-muted">
+      &copy; <span id="year"></span> Shravan Mali. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
