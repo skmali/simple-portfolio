@@ -1,3 +1,9 @@
+# Dependencies
+node_modules/
+
+# Build tooling output is intentionally committed (css/app.css) so the site
+# works straight from a clone/upload without a build step.
+
 # OS / editor
 .DS_Store
 Thumbs.db
@@ -9,3 +15,6 @@ Thumbs.db
 
 # Temp
 *.tmp
+
+# Deploy artifact
+*-deploy.zip
